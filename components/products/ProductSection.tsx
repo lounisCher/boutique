@@ -8,22 +8,44 @@ import { Button } from '../ui/button'
 
 const ProductSection = () => {
   const [productsList, setProductsList] = useState<Products[]>();
+  const [currentStart, setCurrentStart]=useState(0)
+  const limit=5;
+  const [hasMoreProducts, setHasMoreProducts] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  const getLatestProduct = () => {
-    apiProducts.getLatestProduct().then(res => {
-      console.log(res.data);
-      setProductsList(res.data.data);
+
+  
+  const getLatestProduct = (start=0) => {
+    apiProducts.getLatestProduct(start, limit).then((res) => {
+      setProductsList((prevProducts = []) => [...prevProducts, ...res.data.data]);
+      if(res.data.data.length < limit){
+        setHasMoreProducts(false);
+      }
     });
   };
 
-  const getProductListByCategory = (category: string) => {
-    apiProducts.getProductByCategory(category).then(res => {
-      setProductsList(res.data.data);
+  const loadMoreProducts=()=>{
+    const newStart = currentStart+limit;
+    setCurrentStart(newStart);
+    if (selectedCategory) {
+      getProductListByCategory(selectedCategory, newStart);
+    } else {
+      getLatestProduct(newStart);
+    }
+ }
+
+  const getProductListByCategory = (category: string, start=0) => {
+    apiProducts.getProductByCategory(category, start, limit).then(res => {
+      setProductsList((prevProducts=[])=>[...prevProducts, ...res.data.data]);
     });
   };
 
   const handleCategoryChange = (category: string) => {
-    getProductListByCategory(category);
+    setProductsList([]);
+    setCurrentStart(0);
+    setSelectedCategory(category)
+    getProductListByCategory(category, 0);
+
   };
 
   useEffect(() => {
@@ -42,11 +64,13 @@ const ProductSection = () => {
         <ProductList products={productsList || []} />
       </div>   
       <div className='flex justify-end mt-4'>
-        <Button>
+        {hasMoreProducts &&(
+          <Button onClick={loadMoreProducts}>
           <p className='font-bold'>
             Plus
           </p>
         </Button>
+         )}
       </div>     
     </div>
   );

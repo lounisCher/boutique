@@ -45,11 +45,21 @@ export interface ProductResponse {
     data: Products;
 }
 
-const getLatestProduct = () =>  axiosInstance.get<ProductList>('/api/products?populate=*');
+const getLatestProduct = (start=0, limit=5) =>  axiosInstance.get<ProductList>(`/api/products?populate=*`,{
+    params:{
+        'pagination[start]': start,
+        'pagination[limit]': limit
+    }
+});
 
 const getProductById=(id: string)=> axiosInstance.get<ProductResponse>(`/api/products/${id}?populate=*`);
 
-const getProductByCategory=(category: string)=>axiosInstance.get<ProductList>(`/api/products?filters[category][$eq]=${category}&populate=*`)
+const getProductByCategory=(category: string, start = 0, limit = 5)=>axiosInstance.get<ProductList>(`/api/products?filters[category][$eq]=${category}&populate=*`, {
+    params: {
+      'pagination[start]': start,
+      'pagination[limit]': limit,
+    }
+})
 
 
 export default {
