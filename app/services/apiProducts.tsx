@@ -38,14 +38,14 @@ export interface Products {
     instantDelivery?: boolean | null;
     whatsIncluded?: string | null;
 }
-export interface ProductList{
+export interface ProductsList{
     data: Products[],
 }
 export interface ProductResponse {
     data: Products;
 }
 
-const getLatestProduct = (start=0, limit=5) =>  axiosInstance.get<ProductList>(`/api/products?populate=*`,{
+const getLatestProduct = (start=0, limit=5) =>  axiosInstance.get<ProductsList>(`/api/products?populate=*`,{
     params:{
         'pagination[start]': start,
         'pagination[limit]': limit
@@ -54,7 +54,7 @@ const getLatestProduct = (start=0, limit=5) =>  axiosInstance.get<ProductList>(`
 
 const getProductById=(id: string)=> axiosInstance.get<ProductResponse>(`/api/products/${id}?populate=*`);
 
-const getProductByCategory=(category: string, start = 0, limit = 5)=>axiosInstance.get<ProductList>(`/api/products?filters[category][$eq]=${category}&populate=*`, {
+const getProductByCategory=(category: string, start = 0, limit = 5)=>axiosInstance.get<ProductsList>(`/api/products?filters[category][$eq]=${category}&populate=*`, {
     params: {
       'pagination[start]': start,
       'pagination[limit]': limit,
