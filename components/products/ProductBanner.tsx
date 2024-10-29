@@ -1,6 +1,7 @@
 import { Products } from '@/app/services/apiProducts'
 import Image from 'next/image'
 import React from 'react'
+import Skeleton from '../Skeleton';
 
 const ProductBanner = ({product}:{product: Products | undefined}) => {
 
@@ -15,7 +16,7 @@ const ProductBanner = ({product}:{product: Products | undefined}) => {
         height={400}
         className='rounded-lg shadow-md'
         />
-      ): <p>Loading</p>}
+      ): <Skeleton/>}
     </div>
   )
 }

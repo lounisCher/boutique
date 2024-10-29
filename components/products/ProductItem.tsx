@@ -3,25 +3,31 @@ import Image from 'next/image'
 import React from 'react'
 import { Badge } from '../ui/badge'
 import { Laptop, Smartphone, Gamepad2, Headphones } from 'lucide-react';
+import Link from 'next/link';
+import Skeleton from '../Skeleton';
 
 const ProductItem = ({item}: {item:Products}) => {
     
  
 
+  const sekeleton = [1, 2, 3, 4, 5];
 
 
   return (
     <div className='rounded-lg shadow-lg w-fit p-1 hover:border hover:cursor-pointer  border-primary/75 hover:shadow-xl h-80 bg-secondary'>
+
+        
+
          {item.banner.map((img) => (
+            <Link href={`/product-details/${item.documentId}`} key={img.id}>
               <Image
-                key={img.id}
                 src={img.url} 
                 alt={img.name || 'Product image'}
                 width={400}
                 height={400}
                 className='h-[170px] object-cover'
-                
               />
+            </Link>    
             ))}
             <div className='flex justify-between'>
 
@@ -29,10 +35,7 @@ const ProductItem = ({item}: {item:Products}) => {
                 <Badge variant={'secondary'}className='w-fit h-fit m-4 flex gap-3'>
                     <p className='text-xs '>{item.category}</p>
                     {item.category === "PC"?<Laptop size={14}/>: item.category==="PHONE"?<Smartphone size={14}/>: item.category==="Console"? <Gamepad2 size={14}/>: <Headphones size={14}/>}
-                </Badge>
-
-                
-                
+                </Badge>                
             </div>
             <Badge className='m-4'>
                 {item.price} DA

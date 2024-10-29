@@ -1,13 +1,7 @@
-'use client'
-
+import Link from "next/link";
 import React from "react";
-import { useRouter } from 'next/navigation'
-import { Button } from "./ui/button";
 
 const BreadCrumb = () => {
-
-  const router = useRouter()
-
   return (
     <div>
      
@@ -15,8 +9,8 @@ const BreadCrumb = () => {
       <nav aria-label="Breadcrumb" className="flex">
         <ol className="flex overflow-hidden rounded-lg border border-gray-200 text-primary">
           <li className="flex items-center">
-            <Button
-              onClick={()=>router.push("/")}
+            <Link
+              href="/"
               className="flex h-10 items-center gap-1.5 bg-secondary px-4 transition"
             >
               <svg
@@ -35,7 +29,7 @@ const BreadCrumb = () => {
               </svg>
 
               <span className="ms-1.5 text-xs font-medium"> Accueil </span>
-            </Button>
+            </Link>
           </li>
 
           

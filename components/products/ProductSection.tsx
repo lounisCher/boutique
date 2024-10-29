@@ -24,7 +24,7 @@ const ProductSection = () => {
 
     apiProducts.getLatestProduct(start, limit).then((res) => {
       if (start === 0) {
-        setProductsList(res.data.data); // Remplacez complètement la liste
+        setProductsList(res.data.data); // Remplacer la liste de produits pour eviter les doublons
       } else {
         setProductsList((prevProducts) => [
           ...prevProducts,
@@ -76,8 +76,7 @@ const ProductSection = () => {
    
 
   }, []);
-  console.log(ProductList)
-
+ const fetechedProduct = productsList.map(p=>p.title);
   return (
     <div className='px-10 p-4 md:px-20'> 
       <div className='flex flex-col md:flex-row justify-between mb-4'>
