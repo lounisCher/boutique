@@ -3,8 +3,10 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import apiCart from "../services/apiCart";
+import Link from "next/link";
+import Image from "next/image";
 
-const page = () => {
+const Cart = () => {
 
     const {cart, setCart} = useContext(CartContext);
     const getTotalAmount=()=>{
@@ -39,7 +41,7 @@ const page = () => {
             {cart.map((item)=>(
                     item.product&&
                         <li className="flex items-center gap-4" key={item.id}>
-                        <img
+                        <Image
                           src={item.product.banner[0].url}
                           alt=""
                           className="size-16 rounded object-cover"
@@ -94,12 +96,12 @@ const page = () => {
                   </div>
                 </div>
                 <div className="flex justify-end">
-                  <a
-                    href="#"
+                  <Link
+                    href="/checkout"
                     className="block rounded bg-secondary px-5 py-3 text-sm transition hover:bg-primary shadow-lg"
                   >
                     Verifier
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -111,4 +113,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Cart;

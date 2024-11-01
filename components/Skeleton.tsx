@@ -1,8 +1,20 @@
+import clsx from 'clsx'
 import React from 'react'
 
-const Skeleton = () => {
+const Skeleton = ({status}: {status: string}) => {
   return (
-    <div className='w-[400px] h-[300px] bg-slate-200 rounded-lg animate-pulse'>      
+    <div className={clsx(
+      'bg-slate-200 rounded-lg animate-pulse transition-opacity',
+      {
+        'w-[400px] h-[300px] ': status === 'info',
+        'w-[250px] h-[300px] ': status === 'list',
+      },
+    )}>  
+
+
+
+
+    
     </div>
   )
 }

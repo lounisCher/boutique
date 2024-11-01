@@ -1,5 +1,4 @@
 import { CartContext } from "@/app/context/CartContext";
-import Image from "next/image";
 import React, { useContext } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";

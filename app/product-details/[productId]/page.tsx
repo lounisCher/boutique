@@ -1,5 +1,5 @@
 'use client'
-import apiProducts, { ProductsList, Products } from '@/app/services/apiProducts'
+import apiProducts, { Products } from '@/app/services/apiProducts'
 import BreadCrumb from '@/components/BreadCrumb';
 import ProductBanner from '@/components/products/ProductBanner';
 import ProductInfo from '@/components/products/ProductInfo';

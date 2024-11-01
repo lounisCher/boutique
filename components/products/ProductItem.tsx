@@ -4,14 +4,12 @@ import React from 'react'
 import { Badge } from '../ui/badge'
 import { Laptop, Smartphone, Gamepad2, Headphones } from 'lucide-react';
 import Link from 'next/link';
-import Skeleton from '../Skeleton';
-
+ 
 const ProductItem = ({item}: {item:Products}) => {
     
  
 
-  const sekeleton = [1, 2, 3, 4, 5];
-
+ 
 
   return (
     <div className='rounded-lg shadow-lg w-fit p-1 hover:border hover:cursor-pointer  border-primary/75 hover:shadow-xl h-80 bg-secondary'>

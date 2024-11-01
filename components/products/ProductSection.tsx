@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react'
 import { Products } from '@/app/services/apiProducts'
 import ProductsFilterDropDown from './ProductsFilterDropDown'
 import { Button } from '../ui/button'
-import { useSearchParams } from 'next/navigation'
 
 
 const ProductSection = () => {
@@ -76,7 +75,6 @@ const ProductSection = () => {
    
 
   }, []);
- const fetechedProduct = productsList.map(p=>p.title);
   return (
     <div className='px-10 p-4 md:px-20'> 
       <div className='flex flex-col md:flex-row justify-between mb-4'>

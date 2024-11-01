@@ -1,11 +1,7 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 import { Products } from "../services/apiProducts";
 
-//zebiii
 
-interface ProductCart{
-  data: Products
-}
 
 export interface CartItem {
     id: number | undefined;

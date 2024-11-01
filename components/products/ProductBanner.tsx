@@ -16,7 +16,7 @@ const ProductBanner = ({product}:{product: Products | undefined}) => {
         height={400}
         className='rounded-lg shadow-md'
         />
-      ): <Skeleton/>}
+      ): <Skeleton status={'info'}/>}
     </div>
   )
 }

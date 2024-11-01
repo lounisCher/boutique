@@ -22,13 +22,7 @@ const DropMenu = () => {
   const {setTheme, theme} = useTheme();
   const [checked, setChekecked] = useState(false)
   const [isOpen, setIsOpen] = useState(false);
-  const setSwitch = () =>{
-    switch(theme){
-      case "dark" : return setChekecked(true)
-      case "light" : return setChekecked(false)
-      case "system" : return setChekecked(false)
-    }
-  }
+  
   const {cart, setCart} = useContext(CartContext);
   const {user} = useUser();
   const getUserCartItems=()=>{
@@ -47,7 +41,7 @@ const DropMenu = () => {
     })
   }
   useEffect(()=>{
-    user && getUserCartItems();
+    if (user) getUserCartItems();
   }, [user]);
 
   useEffect(() => {

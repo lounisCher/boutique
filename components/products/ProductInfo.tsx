@@ -13,7 +13,7 @@ import AddNotifications from "./AddNotifications";
 
 const ProductInfo = ({ product }: { product: Products | undefined }) => {
 
-  const {cart, setCart} = useContext(CartContext);
+  const { setCart} = useContext(CartContext);
   const {user} = useUser();
   const router = useRouter();
   const [notificationVisible, setNotificationVisible] = useState(false); // État pour la notification

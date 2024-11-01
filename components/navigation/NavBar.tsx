@@ -1,11 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { Button } from "../ui/button";
+import React from "react";
 import { useUser, UserButton } from "@clerk/nextjs";
 import DropMenu from "./DropMenu";
-import Cart from "../products/Cart";
 
 
 const NavBar = () => {
@@ -33,7 +31,7 @@ const NavBar = () => {
                     <Link href={"/sign-up"}
 
                     className="bg-secondary/65 p-2 rounded-lg shadow-lg hover:bg-secondary/95"
-                    >S'inscrire</Link >
+                    >Inscription</Link >
                   </>
                 ) :  <UserButton/>}
                 <DropMenu/>
