@@ -17,7 +17,7 @@ const NavBar = () => {
           <ul className="flex items-center justify-between m-auto">
             <li>
               <Link href="/" aria-label="logo">
-                <p>Logo</p>
+                <p className="text-primary font-mono font-bold text-xl hover:text-primary/85">My Boutique</p>
               </Link>
             </li>
             <li>
@@ -33,7 +33,8 @@ const NavBar = () => {
                     className="bg-secondary/65 p-2 rounded-lg shadow-lg hover:bg-secondary/95"
                     >Inscription</Link >
                   </>
-                ) :  <UserButton/>}
+                ) : <UserButton/>
+                }
                 <DropMenu/>
               </div>
             </li>
